@@ -1,0 +1,700 @@
+/* Reset and base styles */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme variables */
+:root {
+  --color-primary: #121212;
+  --color-secondary: #1e1e1e;
+  --color-tertiary: #2d2d2d;
+  --color-light: #f5f5f5;
+  --color-muted: #a0a0a0;
+  --color-accent: #64ffda;
+  --glass-bg: rgba(30, 30, 30, 0.7);
+}
+
+.dark {
+  --color-primary: #121212;
+  --color-secondary: #1e1e1e;
+  --color-tertiary: #2d2d2d;
+  --color-light: #f5f5f5;
+  --color-muted: #a0a0a0;
+  --color-accent: #64ffda;
+  --glass-bg: rgba(30, 30, 30, 0.7);
+}
+
+.light {
+  --color-primary: #f5f5f5;
+  --color-secondary: #e5e5e5;
+  --color-tertiary: #d4d4d4;
+  --color-light: #1e1e1e;
+  --color-muted: #6b7280;
+  --color-accent: #0e7490;
+  --glass-bg: rgba(245, 245, 245, 0.7);
+}
+
+/* Global styles */
+html,
+body {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 6rem;
+  }
+}
+
+/* Glass effect - dynamic based on theme */
+.bg-dark-glass {
+  background: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bg-light-glass {
+  background: rgba(245, 245, 245, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .card {
+  background-color: #1e1e1e;
+  border: 1px solid rgba(45, 45, 45, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.light .card {
+  background-color: #e5e5e5;
+  border: 1px solid rgba(212, 212, 212, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.dark .card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(100, 255, 218, 0.1);
+}
+
+.light .card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(14, 116, 144, 0.1);
+}
+
+/* Grid card special styling */
+.grid-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Add any custom styles here */
+
+/* Content div (project cards) */
+.content-div {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.content-div:hover {
+  transform: translateY(-5px);
+}
+
+.content-div-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 30, 30, 0.8);
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  backdrop-filter: blur(4px);
+}
+
+.content-div:hover .content-div-overlay {
+  opacity: 1;
+}
+
+/* Navbar specific styles */
+.nav-item {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  cursor: pointer;
+  transition-duration: 200ms;
+  position: relative;
+}
+
+.nav-item:hover {
+  transform: scale(1.05);
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--color-accent);
+  transition: all 0.3s ease-out;
+  transform: translateX(-50%);
+}
+
+.nav-item:hover::after {
+  width: 70%;
+}
+
+.nav-link {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-weight: 500;
+  transition-duration: 200ms;
+}
+
+.nav-link:hover {
+  transform: scale(1.05);
+}
+
+li {
+  transition: transform 0.2s;
+}
+
+li:hover {
+  transform: scale(1.05);
+}
+
+/* Improve section spacing */
+section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+/* Smooth transitions */
+.hover-effect {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Social icons animations */
+.social-icon {
+  @apply transition-transform duration-300 ease-in-out;
+}
+
+.social-icon:hover {
+  @apply transform scale-110;
+}
+
+/* Button styles */
+button {
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+/* Additional animation for social icons */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slideInLeft 0.5s forwards;
+}
+
+/* Grainy texture overlay for futuristic look */
+.grainy {
+  position: relative;
+}
+
+.grainy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+}
+
+/* Smooth transitions */
+.transition-ease {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Skill icon styles */
+.skill-icon {
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  min-width: 140px;
+  backdrop-filter: blur(5px);
+}
+
+.dark .skill-icon {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.light .skill-icon {
+  background: rgba(229, 229, 229, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.skill-icon:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.dark .skill-icon:hover {
+  background: rgba(40, 40, 40, 0.8);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 5px rgba(100, 255, 218, 0.2);
+  border-color: rgba(100, 255, 218, 0.3);
+}
+
+.light .skill-icon:hover {
+  background: rgba(220, 220, 220, 0.8);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 0 5px rgba(14, 116, 144, 0.2);
+  border-color: rgba(14, 116, 144, 0.3);
+}
+
+/* Animation for skill icons */
+.skill-icon svg {
+  transition: all 0.3s ease;
+}
+
+.dark .skill-icon svg {
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
+}
+
+.light .skill-icon svg {
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.15));
+}
+
+.dark .skill-icon:hover svg {
+  filter: drop-shadow(0 0 5px rgba(100, 255, 218, 0.5));
+  transform: scale(1.1);
+}
+
+.light .skill-icon:hover svg {
+  filter: drop-shadow(0 0 5px rgba(14, 116, 144, 0.5));
+  transform: scale(1.1);
+}
+
+/* Add this specific selector to ensure skill name text is always visible */
+.dark .skill-icon p {
+  color: #e5e5e5;
+  /* Light color for dark mode */
+}
+
+.light .skill-icon p {
+  color: #1e1e1e;
+  /* Dark color for light mode */
+}
+
+/* Smooth carousel animation */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Add new styles for social icons sidebar */
+@media (min-width: 1024px) {
+  .social-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    z-index: 40;
+  }
+}
+
+/* Add these animation styles to your existing CSS */
+
+/* Page Transitions */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Initial states for animations */
+.fade-initial {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.slide-left-initial {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.slide-right-initial {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.scale-initial {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Microinteractions */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.dark .hover-glow:hover {
+  box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+  transform: translateY(-2px);
+}
+
+.light .hover-glow:hover {
+  box-shadow: 0 0 15px rgba(14, 116, 144, 0.3);
+  transform: translateY(-2px);
+}
+
+.shimmer-effect {
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Cursor trail effect */
+.cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+.dark .cursor-dot {
+  background: rgba(100, 255, 218, 0.7);
+}
+
+.light .cursor-dot {
+  background: rgba(14, 116, 144, 0.7);
+}
+
+.cursor-dot-main {
+  width: 12px;
+  height: 12px;
+}
+
+/* Interactive button effects */
+.btn-interactive {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-interactive::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-interactive:hover::before {
+  width: 300%;
+  height: 300%;
+}
+
+/* More detailed hover effects for links */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  transition: width 0.3s ease;
+}
+
+.dark .link-underline::after {
+  background-color: #64ffda;
+}
+
+.light .link-underline::after {
+  background-color: #0e7490;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Delayed animations for staggered effects */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+.delay-800 {
+  animation-delay: 800ms;
+}
